@@ -96,7 +96,8 @@ async def test_get_station_data_tool(mock_get_data, client):
     result = await client.call_tool("get_station_data", {
         "station_triplet": "713:CO:SNTL",
         "start_date": "2024-01-01",
-        "end_date": "2024-01-01"
+        "end_date": "2024-01-01",
+        "duration": "DAILY"
     })
     result_text = result[0].text  # Extract text from TextContent
     
@@ -129,7 +130,7 @@ async def test_get_station_data_with_duration(mock_get_data, client):
         "station_triplet": "713:CO:SNTL",
         "start_date": "2024-01-01",
         "end_date": "2024-01-01",
-        "duration_name": "HOURLY"
+        "duration": "HOURLY"
     })
     result_text = result[0].text  # Extract text from TextContent
     
