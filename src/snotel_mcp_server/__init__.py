@@ -4,14 +4,16 @@ SNOTEL MCP Server using fastmcp
 Provides access to USDA SNOTEL (SNOwpack TELemetry) data via the AWDB REST API
 """
 
-from datetime import datetime, timedelta
-from typing import List, Optional, Dict, Any
-import httpx
 import logging
-from fastmcp import FastMCP
 
 # Configure logging
 import os
+from datetime import datetime, timedelta
+from typing import Any, Dict, List, Optional
+
+import httpx
+from fastmcp import FastMCP
+
 log_level = os.getenv('LOGLEVEL', 'WARNING').upper()
 logging.basicConfig(
     level=getattr(logging, log_level),
@@ -499,4 +501,4 @@ async def analyze_snowpack_trends(
 
 # Run the server
 if __name__ == "__main__":
-    mcp.run()
+    mcp.run(transport="streamable-http")
